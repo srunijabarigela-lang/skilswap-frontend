@@ -1,7 +1,323 @@
+```html
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SkillSwap — Learn. Teach. Earn.</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head>
-<body><div id="toast" class="toast"></div>
-<section id="auth" class="auth"><aside class="auth-art"><a class="brand light"><span class="logo">S</span>Skill<span>Swap</span></a><div><small>YOUR SKILLS HAVE VALUE</small><h1>Learn together.<br><em>Grow together.</em></h1><p>A community where students teach what they know and earn points to learn what they love.</p><div class="chips"><span>✦ Share knowledge</span><span>↗ Earn points</span><span>♡ Find your people</span></div></div><div class="art-foot">✧ Knowledge is currency <small>Give a little. Learn a lot.</small></div></aside><main class="auth-main"><div class="auth-wrap"><div class="auth-mode-note"><span>✦</span><b id="authModeLabel">CREATE YOUR ACCOUNT</b></div><div id="loginBox"><small class="eyebrow">WELCOME BACK</small><h2>Good to see you again.</h2><p class="muted">Pick up where your learning journey left off.</p><form id="loginForm"><label>Email address<input id="loginEmail" type="email" placeholder="you@gmail.com" required></label><label>Password<input type="password" placeholder="Enter your password" required></label><button class="btn primary full">Log in <span>→</span></button></form><p class="switch">New to SkillSwap? <button data-tab="register">Create an account</button></p><small class="demo">Demo: use any email and password. Don't use a real password.</small></div><div id="registerBox" class="hidden"><small class="eyebrow">START SOMETHING GOOD</small><h2>Your next skill starts here.</h2><p class="muted">Create an account and receive your first 50 points.</p><form id="registerForm"><label>Full name<input id="regName" required minlength="2" placeholder="Your full name"></label><label>College email<input id="regEmail" type="email" required placeholder="you@gmail.com"></label><label>Create password<input id="regPassword" type="password" minlength="6" required placeholder="At least 6 characters"></label><button class="btn primary full">Create my account <span>→</span></button></form><p class="switch">Already registered? <button data-tab="login">Log in</button></p><small class="demo">Demo only — account data stays in this browser.</small></div></div><small class="auth-bottom">Made for curious minds ✦</small></main></section>
-<div id="app" class="hidden"><aside class="sidebar" id="sidebar"><a class="brand"><span class="logo">S</span>Skill<span>Swap</span></a><small class="side-label">YOUR WORKSPACE</small><nav><button class="nav active" data-page="dashboard">⌂ <span>Overview</span></button><button class="nav" data-page="market">⌕ <span>Explore skills</span><i>NEW</i></button><button class="nav" data-page="listings">✦ <span>My skill listings</span></button><button class="nav" data-page="messages">▤ <span>Messages</span></button><button class="nav" data-page="sessions">▦ <span>My sessions</span></button><button class="nav" data-page="wallet">◈ <span>Points wallet</span></button><button class="nav" data-page="profile">♙ <span>My profile</span></button></nav><div class="sidebar-bottom"><div class="weekly"><b>✧ Keep your streak alive</b><p>Check in daily to unlock your weekly bonus.</p><div id="weekDots" class="week-dots"></div><button id="checkinSide" class="link">Check in today ↗</button></div><button class="mini-profile" data-page="profile"><span class="avatar" id="sideAvatar">S</span><span><b id="sideName">Student</b><small id="sideCollege">Complete your profile</small></span></button></div></aside>
-<main class="main"><header class="topbar"><button id="menuBtn" class="menu">☰</button><div class="crumb">Workspace <span>/</span> <b id="crumb">Overview</b></div><div class="top-actions"><button class="btn points" data-page="wallet">✧ <b id="topPoints">50</b> pts</button><button class="avatar" id="topAvatar" data-page="profile">S</button></div></header><div id="content" class="content"></div></main></div>
-<div id="modalBackdrop" class="backdrop hidden"><section class="modal"><button id="modalX" class="x">×</button><div id="modalContent"></div></section></div><script src="js/config.js"></script><script src="js/script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SkillSwap — Learn. Teach. Earn.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <div id="toast" class="toast"></div>
+
+  <section id="auth" class="auth">
+
+    <aside class="auth-art">
+
+      <a class="brand light">
+        <span class="logo">S</span>Skill<span>Swap</span>
+      </a>
+
+      <div>
+        <small>YOUR SKILLS HAVE VALUE</small>
+
+        <h1>
+          Learn together.<br>
+          <em>Grow together.</em>
+        </h1>
+
+        <p>
+          A community where students teach what they know
+          and earn points to learn what they love.
+        </p>
+
+        <div class="chips">
+          <span>Share knowledge</span>
+          <span>Earn points</span>
+          <span>Find your people</span>
+        </div>
+      </div>
+
+      <div class="art-foot">
+        Knowledge is currency
+        <small>Give a little. Learn a lot.</small>
+      </div>
+
+    </aside>
+
+    <main class="auth-main">
+
+      <div class="auth-wrap">
+
+        <div class="auth-mode-note">
+          <span>✦</span>
+          <b id="authModeLabel">CREATE YOUR ACCOUNT</b>
+        </div>
+
+        <!-- LOGIN -->
+
+        <div id="loginBox">
+
+          <small class="eyebrow">WELCOME BACK</small>
+
+          <h2>Good to see you again.</h2>
+
+          <p class="muted">
+            Pick up where your learning journey left off.
+          </p>
+
+          <form id="loginForm">
+
+            <label>
+              Email address
+              <input
+                id="loginEmail"
+                type="email"
+                placeholder="you@gmail.com"
+                required
+              >
+            </label>
+
+            <label>
+              Password
+              <input
+                id="loginPassword"
+                type="password"
+                placeholder="Enter your password"
+                required
+              >
+            </label>
+
+            <button class="btn primary full" type="submit">
+              Log in <span>→</span>
+            </button>
+
+          </form>
+
+          <p class="switch">
+            New to SkillSwap?
+            <button type="button" data-tab="register">
+              Create an account
+            </button>
+          </p>
+
+          <small class="demo">
+            Demo: use test credentials only. Don't use a real password.
+          </small>
+
+        </div>
+
+        <!-- REGISTER -->
+
+        <div id="registerBox" class="hidden">
+
+          <small class="eyebrow">START SOMETHING GOOD</small>
+
+          <h2>Your next skill starts here.</h2>
+
+          <p class="muted">
+            Create an account and receive your first 50 points.
+          </p>
+
+          <form id="registerForm">
+
+            <label>
+              Full name
+              <input
+                id="regName"
+                type="text"
+                required
+                minlength="2"
+                placeholder="Your full name"
+              >
+            </label>
+
+            <label>
+              College email
+              <input
+                id="regEmail"
+                type="email"
+                required
+                placeholder="you@gmail.com"
+              >
+            </label>
+
+            <label>
+              Create password
+              <input
+                id="regPassword"
+                type="password"
+                minlength="6"
+                required
+                placeholder="At least 6 characters"
+              >
+            </label>
+
+            <button class="btn primary full" type="submit">
+              Create my account <span>→</span>
+            </button>
+
+          </form>
+
+          <p class="switch">
+            Already registered?
+            <button type="button" data-tab="login">
+              Log in
+            </button>
+          </p>
+
+          <small class="demo">
+            Use test details while testing the website.
+          </small>
+
+        </div>
+
+      </div>
+
+      <small class="auth-bottom">
+        Made for curious minds
+      </small>
+
+    </main>
+
+  </section>
+
+  <!-- APPLICATION DASHBOARD -->
+
+  <div id="app" class="hidden">
+
+    <aside class="sidebar" id="sidebar">
+
+      <a class="brand">
+        <span class="logo">S</span>Skill<span>Swap</span>
+      </a>
+
+      <small class="side-label">YOUR WORKSPACE</small>
+
+      <nav>
+
+        <button class="nav active" data-page="dashboard">
+          ⌂ <span>Overview</span>
+        </button>
+
+        <button class="nav" data-page="market">
+          ⌕ <span>Explore skills</span>
+          <i>NEW</i>
+        </button>
+
+        <button class="nav" data-page="listings">
+          ✦ <span>My skill listings</span>
+        </button>
+
+        <button class="nav" data-page="messages">
+          ▤ <span>Messages</span>
+        </button>
+
+        <button class="nav" data-page="sessions">
+          ▦ <span>My sessions</span>
+        </button>
+
+        <button class="nav" data-page="wallet">
+          ◈ <span>Points wallet</span>
+        </button>
+
+        <button class="nav" data-page="profile">
+          ♙ <span>My profile</span>
+        </button>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <div class="weekly">
+          <b>Keep your streak alive</b>
+
+          <p>
+            Check in daily to unlock your weekly bonus.
+          </p>
+
+          <div id="weekDots" class="week-dots"></div>
+
+          <button id="checkinSide" class="link">
+            Check in today
+          </button>
+        </div>
+
+        <button class="mini-profile" data-page="profile">
+
+          <span class="avatar" id="sideAvatar">S</span>
+
+          <span>
+            <b id="sideName">Student</b>
+            <small id="sideCollege">Complete your profile</small>
+          </span>
+
+        </button>
+
+      </div>
+
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+
+        <button id="menuBtn" class="menu" type="button">
+          ☰
+        </button>
+
+        <div class="crumb">
+          Workspace <span>/</span>
+          <b id="crumb">Overview</b>
+        </div>
+
+        <div class="top-actions">
+
+          <button class="btn points" data-page="wallet">
+            ✧ <b id="topPoints">50</b> pts
+          </button>
+
+          <button class="avatar" id="topAvatar" data-page="profile">
+            S
+          </button>
+
+        </div>
+
+      </header>
+
+      <div id="content" class="content"></div>
+
+    </main>
+
+  </div>
+
+  <!-- MODAL -->
+
+  <div id="modalBackdrop" class="backdrop hidden">
+
+    <section class="modal">
+
+      <button id="modalX" class="x" type="button">×</button>
+
+      <div id="modalContent"></div>
+
+    </section>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="./config.js"></script>
+  <script src="./script.js"></script>
+
+</body>
+</html>
+```
